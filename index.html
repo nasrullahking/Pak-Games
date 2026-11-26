@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Games</title>
+<style>
+:root{--bg:#fff;--card:#f2f2f2;--text:#0f0f0f;--sub:#606060}
+@media (prefers-color-scheme:dark){:root{--bg:#0f0f0f;--card:#272727;--text:#f1f1f1;--sub:#aaa}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Roboto,Arial,sans-serif}
+header{padding:16px 24px;font-size:20px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 16px;padding:0 24px 32px;max-width:1200px;margin:auto}
+.card{text-decoration:none;color:inherit;display:block}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;background:var(--card);display:block;transition:transform .2s}
+.card:hover img{transform:scale(1.03)}
+.name{font-size:15px;font-weight:600;margin-top:10px;line-height:1.3}
+.link{font-size:13px;color:var(--sub);word-break:break-all;margin-top:2px}
+@media (max-width:800px){.grid{grid-template-columns:repeat(2,1fr);padding:0 12px 24px}}
+@media (max-width:480px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>🎮 Games</header>
+
+<!--
+  HAR GAME KA FORMAT:
+    <img src="img/game1.png">  <- yahan apni image ka path likhein
+    naam                        <- game ka naam
+    href="..."                  <- game ka link
+  Images "img" folder mein rakhein.
+-->
+
+<div class="grid">
+
+  <!-- GAME 1: Minecraft -->
+  <a class="card" href="https://www.C444.com" target="_blank">
+    <img src="img/download.jpg" alt="Minecraft">
+    <div class="name">C444</div>
+    <div class="link">C444</div>
+  </a>
+
+  <!-- GAME 2: PUBG Mobile -->
+  <a class="card" href="https://www.pubgmobile.com" target="_blank">
+    <img src="img/game2.png" alt="PUBG Mobile">
+    <div class="name">PUBG Mobile</div>
+    <div class="link">www.pubgmobile.com</div>
+  </a>
+
+  <!-- GAME 3: Fortnite -->
+  <a class="card" href="https://www.fortnite.com" target="_blank">
+    <img src="img/game3.png" alt="Fortnite">
+    <div class="name">Fortnite</div>
+    <div class="link">www.fortnite.com</div>
+  </a>
+
+  <!-- GAME 4: GTA V -->
+  <a class="card" href="https://www.rockstargames.com" target="_blank">
+    <img src="img/game4.png" alt="GTA V">
+    <div class="name">GTA V</div>
+    <div class="link">www.rockstargames.com</div>
+  </a>
+
+  <!-- GAME 5: FIFA -->
+  <a class="card" href="https://www.ea.com" target="_blank">
+    <img src="img/game5.png" alt="FIFA">
+    <div class="name">FIFA</div>
+    <div class="link">www.ea.com</div>
+  </a>
+
+  <!-- GAME 6: Need for Speed -->
+  <a class="card" href="https://www.ea.com" target="_blank">
+    <img src="img/game6.png" alt="Need for Speed">
+    <div class="name">Need for Speed</div>
+    <div class="link">www.ea.com</div>
+  </a>
+
+  <!-- GAME 7: Call of Duty -->
+  <a class="card" href="https://www.callofduty.com" target="_blank">
+    <img src="img/game7.png" alt="Call of Duty">
+    <div class="name">Call of Duty</div>
+    <div class="link">www.callofduty.com</div>
+  </a>
+
+  <!-- GAME 8: Valorant -->
+  <a class="card" href="https://playvalorant.com" target="_blank">
+    <img src="img/game8.png" alt="Valorant">
+    <div class="name">Valorant</div>
+    <div class="link">playvalorant.com</div>
+  </a>
+
+  <!-- GAME 9: Free Fire -->
+  <a class="card" href="https://ff.garena.com" target="_blank">
+    <img src="img/game9.png" alt="Free Fire">
+    <div class="name">Free Fire</div>
+    <div class="link">ff.garena.com</div>
+  </a>
+
+  <!-- GAME 10: Roblox -->
+  <a class="card" href="https://www.roblox.com" target="_blank">
+    <img src="img/game10.png" alt="Roblox">
+    <div class="name">Roblox</div>
+    <div class="link">www.roblox.com</div>
+  </a>
+
+  <!-- GAME 11: Super Mario -->
+  <a class="card" href="https://www.nintendo.com" target="_blank">
+    <img src="img/game11.png" alt="Super Mario">
+    <div class="name">Super Mario</div>
+    <div class="link">www.nintendo.com</div>
+  </a>
+
+  <!-- GAME 12: Zelda -->
+  <a class="card" href="https://www.nintendo.com" target="_blank">
+    <img src="img/game12.png" alt="Zelda">
+    <div class="name">Zelda</div>
+    <div class="link">www.nintendo.com</div>
+  </a>
+
+  <!-- GAME 13: Angry Birds -->
+  <a class="card" href="https://www.angrybirds.com" target="_blank">
+    <img src="img/game13.png" alt="Angry Birds">
+    <div class="name">Angry Birds</div>
+    <div class="link">www.angrybirds.com</div>
+  </a>
+
+  <!-- GAME 14: Candy Crush -->
+  <a class="card" href="https://king.com" target="_blank">
+    <img src="img/game14.png" alt="Candy Crush">
+    <div class="name">Candy Crush</div>
+    <div class="link">king.com</div>
+  </a>
+
+  <!-- GAME 15: Among Us -->
+  <a class="card" href="https://www.innersloth.com" target="_blank">
+    <img src="img/game15.png" alt="Among Us">
+    <div class="name">Among Us</div>
+    <div class="link">www.innersloth.com</div>
+  </a>
+
+  <!-- GAME 16: NBA 2K -->
+  <a class="card" href="https://nba.2k.com" target="_blank">
+    <img src="img/game16.png" alt="NBA 2K">
+    <div class="name">NBA 2K</div>
+    <div class="link">nba.2k.com</div>
+  </a>
+
+  <!-- GAME 17: Madden NFL -->
+  <a class="card" href="https://www.ea.com" target="_blank">
+    <img src="img/game17.png" alt="Madden NFL">
+    <div class="name">Madden NFL</div>
+    <div class="link">www.ea.com</div>
+  </a>
+
+  <!-- GAME 18: Cricket 24 -->
+  <a class="card" href="https://www.cricket24.com" target="_blank">
+    <img src="img/game18.png" alt="Cricket 24">
+    <div class="name">Cricket 24</div>
+    <div class="link">www.cricket24.com</div>
+  </a>
+
+  <!-- GAME 19: Chess.com -->
+  <a class="card" href="https://www.chess.com" target="_blank">
+    <img src="img/game19.png" alt="Chess.com">
+    <div class="name">Chess.com</div>
+    <div class="link">www.chess.com</div>
+  </a>
+
+  <!-- GAME 20: Poker -->
+  <a class="card" href="https://www.pokerstars.com" target="_blank">
+    <img src="img/game20.png" alt="Poker">
+    <div class="name">Poker</div>
+    <div class="link">www.pokerstars.com</div>
+  </a>
+
+  <!-- GAME 21: Dragon Ball -->
+  <a class="card" href="https://www.dragonball-official.com" target="_blank">
+    <img src="img/game21.png" alt="Dragon Ball">
+    <div class="name">Dragon Ball</div>
+    <div class="link">www.dragonball-official.com</div>
+  </a>
+
+  <!-- GAME 22: League of Legends -->
+  <a class="card" href="https://www.leagueoflegends.com" target="_blank">
+    <img src="img/game22.png" alt="League of Legends">
+    <div class="name">League of Legends</div>
+    <div class="link">www.leagueoflegends.com</div>
+  </a>
+
+  <!-- GAME 23: Dota 2 -->
+  <a class="card" href="https://www.dota2.com" target="_blank">
+    <img src="img/game23.png" alt="Dota 2">
+    <div class="name">Dota 2</div>
+    <div class="link">www.dota2.com</div>
+  </a>
+
+  <!-- GAME 24: CS:GO -->
+  <a class="card" href="https://www.counter-strike.net" target="_blank">
+    <img src="img/game24.png" alt="CS:GO">
+    <div class="name">CS:GO</div>
+    <div class="link">www.counter-strike.net</div>
+  </a>
+
+  <!-- GAME 25: Clash of Clans -->
+  <a class="card" href="https://supercell.com" target="_blank">
+    <img src="img/game25.png" alt="Clash of Clans">
+    <div class="name">Clash of Clans</div>
+    <div class="link">supercell.com</div>
+  </a>
+
+  <!-- GAME 26: Clash Royale -->
+  <a class="card" href="https://supercell.com" target="_blank">
+    <img src="img/game26.png" alt="Clash Royale">
+    <div class="name">Clash Royale</div>
+    <div class="link">supercell.com</div>
+  </a>
+
+  <!-- GAME 27: Brawl Stars -->
+  <a class="card" href="https://supercell.com" target="_blank">
+    <img src="img/game27.png" alt="Brawl Stars">
+    <div class="name">Brawl Stars</div>
+    <div class="link">supercell.com</div>
+  </a>
+
+  <!-- GAME 28: Age of Empires -->
+  <a class="card" href="https://www.ageofempires.com" target="_blank">
+    <img src="img/game28.png" alt="Age of Empires">
+    <div class="name">Age of Empires</div>
+    <div class="link">www.ageofempires.com</div>
+  </a>
+
+  <!-- GAME 29: Battlefield -->
+  <a class="card" href="https://www.ea.com" target="_blank">
+    <img src="img/game29.png" alt="Battlefield">
+    <div class="name">Battlefield</div>
+    <div class="link">www.ea.com</div>
+  </a>
+
+  <!-- GAME 30: Resident Evil -->
+  <a class="card" href="https://www.residentevil.com" target="_blank">
+    <img src="img/game30.png" alt="Resident Evil">
+    <div class="name">Resident Evil</div>
+    <div class="link">www.residentevil.com</div>
+  </a>
+
+  <!-- GAME 31: Spider-Man -->
+  <a class="card" href="https://www.playstation.com" target="_blank">
+    <img src="img/game31.png" alt="Spider-Man">
+    <div class="name">Spider-Man</div>
+    <div class="link">www.playstation.com</div>
+  </a>
+
+  <!-- GAME 32: Batman Arkham -->
+  <a class="card" href="https://www.rocksteadyltd.com" target="_blank">
+    <img src="img/game32.png" alt="Batman Arkham">
+    <div class="name">Batman Arkham</div>
+    <div class="link">www.rocksteadyltd.com</div>
+  </a>
+
+  <!-- GAME 33: Red Dead -->
+  <a class="card" href="https://www.rockstargames.com" target="_blank">
+    <img src="img/game33.png" alt="Red Dead">
+    <div class="name">Red Dead</div>
+    <div class="link">www.rockstargames.com</div>
+  </a>
+
+  <!-- GAME 34: Assassin's Creed -->
+  <a class="card" href="https://www.ubisoft.com" target="_blank">
+    <img src="img/game34.png" alt="Assassin's Creed">
+    <div class="name">Assassin's Creed</div>
+    <div class="link">www.ubisoft.com</div>
+  </a>
+
+  <!-- GAME 35: Tetris -->
+  <a class="card" href="https://tetris.com" target="_blank">
+    <img src="img/game35.png" alt="Tetris">
+    <div class="name">Tetris</div>
+    <div class="link">tetris.com</div>
+  </a>
+
+  <!-- GAME 36: Snake -->
+  <a class="card" href="https://playsnake.org" target="_blank">
+    <img src="img/game36.png" alt="Snake">
+    <div class="name">Snake</div>
+    <div class="link">playsnake.org</div>
+  </a>
+
+  <!-- GAME 37: Subway Surfers -->
+  <a class="card" href="https://subwaysurfers.com" target="_blank">
+    <img src="img/game37.png" alt="Subway Surfers">
+    <div class="name">Subway Surfers</div>
+    <div class="link">subwaysurfers.com</div>
+  </a>
+
+  <!-- GAME 38: Temple Run -->
+  <a class="card" href="https://www.imangistudios.com" target="_blank">
+    <img src="img/game38.png" alt="Temple Run">
+    <div class="name">Temple Run</div>
+    <div class="link">www.imangistudios.com</div>
+  </a>
+
+  <!-- GAME 39: Fall Guys -->
+  <a class="card" href="https://www.fallguys.com" target="_blank">
+    <img src="img/game39.png" alt="Fall Guys">
+    <div class="name">Fall Guys</div>
+    <div class="link">www.fallguys.com</div>
+  </a>
+
+  <!-- GAME 40: Farming Simulator -->
+  <a class="card" href="https://www.farming-simulator.com" target="_blank">
+    <img src="img/game40.png" alt="Farming Simulator">
+    <div class="name">Farming Simulator</div>
+    <div class="link">www.farming-simulator.com</div>
+  </a>
+
+  <!-- GAME 41: Cities Skylines -->
+  <a class="card" href="https://www.paradoxinteractive.com" target="_blank">
+    <img src="img/game41.png" alt="Cities Skylines">
+    <div class="name">Cities Skylines</div>
+    <div class="link">www.paradoxinteractive.com</div>
+  </a>
+
+  <!-- GAME 42: Guitar Hero -->
+  <a class="card" href="https://www.guitarhero.com" target="_blank">
+    <img src="img/game42.png" alt="Guitar Hero">
+    <div class="name">Guitar Hero</div>
+    <div class="link">www.guitarhero.com</div>
+  </a>
+
+  <!-- GAME 43: Moto GP -->
+  <a class="card" href="https://www.motogp.com" target="_blank">
+    <img src="img/game43.png" alt="Moto GP">
+    <div class="name">Moto GP</div>
+    <div class="link">www.motogp.com</div>
+  </a>
+
+  <!-- GAME 44: Flight Simulator -->
+  <a class="card" href="https://www.flightsimulator.com" target="_blank">
+    <img src="img/game44.png" alt="Flight Simulator">
+    <div class="name">Flight Simulator</div>
+    <div class="link">www.flightsimulator.com</div>
+  </a>
+
+  <!-- GAME 45: Genshin Impact -->
+  <a class="card" href="https://genshin.hoyoverse.com" target="_blank">
+    <img src="img/game45.png" alt="Genshin Impact">
+    <div class="name">Genshin Impact</div>
+    <div class="link">genshin.hoyoverse.com</div>
+  </a>
+
+  <!-- GAME 46: Apex Legends -->
+  <a class="card" href="https://www.ea.com" target="_blank">
+    <img src="img/game46.png" alt="Apex Legends">
+    <div class="name">Apex Legends</div>
+    <div class="link">www.ea.com</div>
+  </a>
+
+  <!-- GAME 47: Overwatch -->
+  <a class="card" href="https://overwatch.blizzard.com" target="_blank">
+    <img src="img/game47.png" alt="Overwatch">
+    <div class="name">Overwatch</div>
+    <div class="link">overwatch.blizzard.com</div>
+  </a>
+
+  <!-- GAME 48: Skyrim -->
+  <a class="card" href="https://elderscrolls.bethesda.net" target="_blank">
+    <img src="img/game48.png" alt="Skyrim">
+    <div class="name">Skyrim</div>
+    <div class="link">elderscrolls.bethesda.net</div>
+  </a>
+
+  <!-- GAME 49: Portal 2 -->
+  <a class="card" href="https://www.thinkwithportals.com" target="_blank">
+    <img src="img/game49.png" alt="Portal 2">
+    <div class="name">Portal 2</div>
+    <div class="link">www.thinkwithportals.com</div>
+  </a>
+
+  <!-- GAME 50: Ludo King -->
+  <a class="card" href="https://www.ludoking.com" target="_blank">
+    <img src="img/game50.png" alt="Ludo King">
+    <div class="name">Ludo King</div>
+    <div class="link">www.ludoking.com</div>
+  </a>
+
+</div>
+
+</body>
+</html>
