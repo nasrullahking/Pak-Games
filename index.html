@@ -5,54 +5,134 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Games</title>
 <style>
-:root{--bg:#fff;--card:#f2f2f2;--text:#0f0f0f;--sub:#606060}
-@media (prefers-color-scheme:dark){:root{--bg:#0f0f0f;--card:#272727;--text:#f1f1f1;--sub:#aaa}}
+:root{--bg:#fff;--card:#f2f2f2;--text:#0f0f0f;--sub:#606060;--border:#ddd;--accent:#3ea6ff}
+@media (prefers-color-scheme:dark){:root{--bg:#0f0f0f;--card:#272727;--text:#f1f1f1;--sub:#aaa;--border:#3f3f3f;--accent:#3ea6ff}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Roboto,Arial,sans-serif}
-header{padding:16px 24px;font-size:20px;font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 16px;padding:0 24px 32px;max-width:1200px;margin:auto}
+
+/* Header & Search Bar */
+header{
+  padding:16px 24px;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+  position:sticky;
+  top:0;
+  background:var(--bg);
+  z-index:100;
+}
+.logo{font-size:20px;font-weight:700}
+
+.search-box{
+  position:relative;
+  width:320px;
+  max-width:100%;
+}
+.search-box input{
+  width:100%;
+  padding:10px 16px;
+  border-radius:24px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  font-size:14px;
+  outline:none;
+}
+.search-box input:focus{
+  border-color:var(--accent);
+}
+
+/* Suggestions Dropdown */
+#suggestions{
+  position:absolute;
+  top:46px;
+  left:0;
+  width:100%;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  display:none;
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(0,0,0,0.25);
+  z-index:200;
+  max-height:260px;
+  overflow-y:auto;
+}
+.sug-item{
+  padding:10px 16px;
+  cursor:pointer;
+  font-size:14px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.sug-item:last-child{border-bottom:none}
+.sug-item:hover{
+  background:var(--accent);
+  color:#000;
+  font-weight:600;
+}
+
+/* Grid & Cards */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 16px;padding:8px 24px 32px;max-width:1200px;margin:auto}
 .card{text-decoration:none;color:inherit;display:block}
 .card img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;background:var(--card);display:block;transition:transform .2s}
 .card:hover img{transform:scale(1.03)}
 .name{font-size:15px;font-weight:600;margin-top:10px;line-height:1.3}
 .link{font-size:13px;color:var(--sub);word-break:break-all;margin-top:2px}
-@media (max-width:800px){.grid{grid-template-columns:repeat(2,1fr);padding:0 12px 24px}}
+
+#noMatch{
+  display:none;
+  text-align:center;
+  padding:48px 20px;
+  color:var(--sub);
+  font-size:16px;
+}
+
+@media (max-width:800px){
+  header{padding:14px 12px}
+  .search-box{width:100%}
+  .grid{grid-template-columns:repeat(2,1fr);padding:8px 12px 24px}
+}
 @media (max-width:480px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<header>🎮 Games</header>
+<header>
+  <div class="logo">All Games</div>
+  <div class="search-box">
+    <input type="text" id="searchInput" oninput="filterGames()" placeholder="Search games..." autocomplete="off">
+    <div id="suggestions"></div>
+  </div>
+</header>
 
-<!--
-  HAR GAME KA FORMAT:
-    <img src="img/game1.png">  <- yahan apni image ka path likhein
-    naam                        <- game ka naam
-    href="..."                  <- game ka link
-  Images "img" folder mein rakhein.
--->
+<div class="grid" id="gamesGrid">
 
-<div class="grid">
-
-  <!-- GAME 1: Minecraft -->
-  <a class="card" href="https://www.C444.com" target="_blank">
-    <img src="img/download.jpg" alt="Minecraft">
+  <!-- GAME 1: C444 -->
+  <a class="card" href="https://www.333c444.com/?dl=cze6s5" target="_blank">
+    <img src="images/C444.jpg" alt="C444">
     <div class="name">C444</div>
-    <div class="link">C444</div>
+    <div class="link">C444 Game Link</div>
   </a>
 
   <!-- GAME 2: PUBG Mobile -->
-  <a class="card" href="https://www.m666.com" target="_blank">
-    <img src="img/images.jpg" alt="PUBG Mobile">
-    <div class="name">M666</div>
-    <div class="link">www.m666.com</div>
+  <a class="card" href="https://www.pkrbet.net/?dl=4juim2" target="_blank">
+    <img src="images/pkrbet.jpg" alt="PUBG Mobile">
+    <div class="name">PKRBet</div>
+    <div class="link">PKRBet Game Link</div>
   </a>
 
   <!-- GAME 3: Fortnite -->
-  <a class="card" href="https://www.fortnite.com" target="_blank">
-    <img src="img/game3.png" alt="Fortnite">
-    <div class="name">Fortnite</div>
-    <div class="link">www.fortnite.com</div>
+  <a class="card" href="https://www.pkr365.win/?id=718905467" target="_blank">
+    <img src="images/pkr365.jpg" alt="Fortnite">
+    <div class="name">PKR365</div>
+    <div class="link">PKR365 Game Link</div>
   </a>
 
   <!-- GAME 4: GTA V -->
@@ -385,6 +465,54 @@ header{padding:16px 24px;font-size:20px;font-weight:700}
   </a>
 
 </div>
+
+<div id="noMatch">Koi game nahi mili.</div>
+
+<script>
+function filterGames() {
+  const input = document.getElementById("searchInput");
+  const query = input.value.toLowerCase().trim();
+  const cards = document.querySelectorAll(".card");
+  const sugBox = document.getElementById("suggestions");
+  const noMatch = document.getElementById("noMatch");
+
+  sugBox.innerHTML = "";
+  let found = 0;
+
+  cards.forEach(card => {
+    const name = card.querySelector(".name").textContent.trim();
+
+    if (name.toLowerCase().includes(query)) {
+      card.style.display = "block";
+      found++;
+
+      if (query.length >= 2) {
+        const item = document.createElement("div");
+        item.className = "sug-item";
+        item.innerHTML = `<span>${name}</span><span>▶</span>`;
+        item.onmousedown = function(e) {
+          e.preventDefault();
+          input.value = name;
+          sugBox.style.display = "none";
+          filterGames();
+        };
+        sugBox.appendChild(item);
+      }
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+  sugBox.style.display = (query.length >= 2 && found > 0) ? "block" : "none";
+  noMatch.style.display = (found === 0) ? "block" : "none";
+}
+
+document.addEventListener("click", function(e) {
+  if (!e.target.closest(".search-box")) {
+    document.getElementById("suggestions").style.display = "none";
+  }
+});
+</script>
 
 </body>
 </html>
