@@ -307,12 +307,117 @@ header {
   font-weight: 700;
 }
 
+/* ================= FEATURED SLIDER (Top 9 Games) ================= */
+.featured-section {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 22px 24px 8px;
+}
+
+.featured-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fbbf24;
+  margin: 0 0 14px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  background: #0d1220;
+  aspect-ratio: 16 / 9;
+  cursor: pointer;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 18px 14px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 3;
+}
+
+.slide-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.slide-rating {
+  font-size: 15px;
+  color: #fbbf24;
+  font-weight: 600;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.dot.active {
+  background: #fbbf24;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
+  transform: scale(1.2);
+}
+
 /* Grid & Cards */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px 18px;
-  padding: 28px 24px 48px;
+  padding: 20px 24px 48px;
   max-width: 1240px;
   margin: auto;
 }
@@ -375,6 +480,27 @@ header {
   color: #ffffff;
 }
 
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+.stars {
+  color: #fbbf24;
+  letter-spacing: 1px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.rating-num {
+  color: #94a3b8;
+  font-weight: 600;
+  font-size: 12.5px;
+}
+
 .link {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 12.5px;
@@ -401,16 +527,25 @@ header {
   .search-box {
     width: 100%;
   }
+  .featured-section {
+    padding: 16px 14px 6px;
+  }
   .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px 12px;
-    padding: 18px 14px 32px;
+    padding: 14px 14px 32px;
+  }
+  .slide-name {
+    font-size: 16px;
   }
 }
 
 @media (max-width: 480px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+  .slider-container {
+    border-radius: 14px;
   }
 }
 </style>
@@ -446,6 +581,15 @@ header {
   </div>
 </header>
 
+<!-- FEATURED SLIDER - First 9 Games -->
+<section class="featured-section">
+  <div class="featured-title">🔥 Top Featured Games</div>
+  <div class="slider-container" id="sliderContainer">
+    <!-- Slides will be injected by JS -->
+  </div>
+  <div class="slider-dots" id="sliderDots"></div>
+</section>
+
 <div class="grid" id="gamesGrid">
 
   <!-- TOP 6 PRIORITY GAMES -->
@@ -457,6 +601,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">PKRBet</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.2/6</span></div>
       <div class="link">www.pkrbet.net</div>
     </div>
   </a>
@@ -468,6 +613,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">PKR365</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.0/6</span></div>
       <div class="link">www.pkr365.win</div>
     </div>
   </a>
@@ -479,6 +625,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">JJWin</div>
+      <div class="rating"><span class="stars">★★★★★★</span> <span class="rating-num">5.8/6</span></div>
       <div class="link">www.jjwin.com</div>
     </div>
   </a>
@@ -490,6 +637,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">C444</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.5/6</span></div>
       <div class="link">www.c444.com</div>
     </div>
   </a>
@@ -501,6 +649,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">M666</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.3/6</span></div>
       <div class="link">https://www.99m666.vip/?dl=aewqnr</div>
     </div>
   </a>
@@ -512,6 +661,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">777SX</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">4.9/6</span></div>
       <div class="link">777SX Game Download Link</div>
     </div>
   </a>
@@ -525,6 +675,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">3Patti Gold</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.1/6</span></div>
       <div class="link">3Patti Gold Game Download Link</div>
     </div>
   </a>
@@ -536,6 +687,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">7F777</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.7/6</span></div>
       <div class="link">7F777 Game Download Link</div>
     </div>
   </a>
@@ -547,6 +699,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">88EF</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.4/6</span></div>
       <div class="link">88EF Game Download Link</div>
     </div>
   </a>
@@ -558,6 +711,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">666D</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.3/6</span></div>
       <div class="link">666D Game Download Link</div>
     </div>
   </a>
@@ -569,6 +723,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">777SZ</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.0/6</span></div>
       <div class="link">777SZ Game Download Link</div>
     </div>
   </a>
@@ -580,6 +735,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">999R</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.6/6</span></div>
       <div class="link">999R Game Download Link</div>
     </div>
   </a>
@@ -591,6 +747,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">AlanoDT</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.2/6</span></div>
       <div class="link">AlanoDT Game Download Link</div>
     </div>
   </a>
@@ -602,6 +759,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">CT777</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.4/6</span></div>
       <div class="link">CT777 Game Download Link</div>
     </div>
   </a>
@@ -613,6 +771,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">CZ777</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.5/6</span></div>
       <div class="link">CZ777 Game Download Link</div>
     </div>
   </a>
@@ -624,6 +783,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">G555</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.8/6</span></div>
       <div class="link">G555 Game Download Link</div>
     </div>
   </a>
@@ -635,6 +795,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">H555</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.1/6</span></div>
       <div class="link">H555 Game Download Link</div>
     </div>
   </a>
@@ -646,6 +807,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">HE777</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.5/6</span></div>
       <div class="link">HE777 Game Download Link</div>
     </div>
   </a>
@@ -657,6 +819,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">Khelo 786</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.3/6</span></div>
       <div class="link">Khelo 786 Game Download Link</div>
     </div>
   </a>
@@ -668,6 +831,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">Luck33</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.7/6</span></div>
       <div class="link">Luck33 Game Download Link</div>
     </div>
   </a>
@@ -679,6 +843,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">Luck55</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.0/6</span></div>
       <div class="link">Luck55 Game Download Link</div>
     </div>
   </a>
@@ -690,6 +855,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">Luck91</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.6/6</span></div>
       <div class="link">Luck91 Game Download Link</div>
     </div>
   </a>
@@ -701,6 +867,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">Lucky97</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.4/6</span></div>
       <div class="link">Lucky97 Game Download Link</div>
     </div>
   </a>
@@ -712,6 +879,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">Lucky101</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.9/6</span></div>
       <div class="link">Lucky101 Game Download Link</div>
     </div>
   </a>
@@ -723,6 +891,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">M333</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.2/6</span></div>
       <div class="link">M333 Game Download Link</div>
     </div>
   </a>
@@ -734,6 +903,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">P999</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.4/6</span></div>
       <div class="link">P999 Game Download Link</div>
     </div>
   </a>
@@ -745,6 +915,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">Pak67</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.1/6</span></div>
       <div class="link">Pak67 Game Download Link</div>
     </div>
   </a>
@@ -756,6 +927,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">PAK804</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.7/6</span></div>
       <div class="link">PAK804 Game Download Link</div>
     </div>
   </a>
@@ -767,6 +939,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">PK67</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.0/6</span></div>
       <div class="link">PK67 Game Download Link</div>
     </div>
   </a>
@@ -778,6 +951,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">PK68</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.5/6</span></div>
       <div class="link">PK68 Game Download Link</div>
     </div>
   </a>
@@ -789,6 +963,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">PK365</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.3/6</span></div>
       <div class="link">PK365 Game Download Link</div>
     </div>
   </a>
@@ -800,6 +975,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">PK8888</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.8/6</span></div>
       <div class="link">PK8888 Game Download Link</div>
     </div>
   </a>
@@ -811,6 +987,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">PKR888</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.2/6</span></div>
       <div class="link">PKR888 Game Download Link</div>
     </div>
   </a>
@@ -822,6 +999,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">Q789</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.6/6</span></div>
       <div class="link">Q789 Game Download Link</div>
     </div>
   </a>
@@ -833,6 +1011,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">R789</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.1/6</span></div>
       <div class="link">R789 Game Download Link</div>
     </div>
   </a>
@@ -844,6 +1023,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">RS777</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.9/6</span></div>
       <div class="link">RS777 Game Download Link</div>
     </div>
   </a>
@@ -851,10 +1031,11 @@ header {
   <!-- GAME 37 -->
   <a class="card" href="#" target="_blank">
     <div class="card-img-wrap">
-      <img src="images/Timi Slots.jpg" alt="Timi Slots">
+      <img src="images/Timi Slots.jpg" alt="Timi slots">
     </div>
     <div class="card-info">
       <div class="name">Timi Slots</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.4/6</span></div>
       <div class="link">Timi Slots Game Download Link</div>
     </div>
   </a>
@@ -866,6 +1047,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">W567</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.5/6</span></div>
       <div class="link">W567 Game Download Link</div>
     </div>
   </a>
@@ -877,6 +1059,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">WC777</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.0/6</span></div>
       <div class="link">WC777 Game Download Link</div>
     </div>
   </a>
@@ -888,6 +1071,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">Wealth DT3</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.7/6</span></div>
       <div class="link">Wealth DT3 Game Download Link</div>
     </div>
   </a>
@@ -899,6 +1083,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">Winli Slots</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.3/6</span></div>
       <div class="link">Winli Slots Game Download Link</div>
     </div>
   </a>
@@ -910,6 +1095,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">X111</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.6/6</span></div>
       <div class="link">X111 Game Download Link</div>
     </div>
   </a>
@@ -921,6 +1107,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">X555</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.1/6</span></div>
       <div class="link">X555 Game Download Link</div>
     </div>
   </a>
@@ -932,6 +1119,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">Y444</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.8/6</span></div>
       <div class="link">Y444 Game Download Link</div>
     </div>
   </a>
@@ -943,6 +1131,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">Y888</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.2/6</span></div>
       <div class="link">Y888 Game Download Link</div>
     </div>
   </a>
@@ -954,6 +1143,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">Y999</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.5/6</span></div>
       <div class="link">Y999 Game Download Link</div>
     </div>
   </a>
@@ -965,6 +1155,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">Z777</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.0/6</span></div>
       <div class="link">Z777 Game Download Link</div>
     </div>
   </a>
@@ -976,6 +1167,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">ZH88</div>
+      <div class="rating"><span class="stars">★★★★☆☆</span> <span class="rating-num">4.7/6</span></div>
       <div class="link">ZH88 Game Download Link</div>
     </div>
   </a>
@@ -987,6 +1179,7 @@ header {
     </div>
     <div class="card-info">
       <div class="name">ZV777</div>
+      <div class="rating"><span class="stars">★★★★★☆</span> <span class="rating-num">5.3/6</span></div>
       <div class="link">ZV777 Game Download Link</div>
     </div>
   </a>
@@ -1033,6 +1226,127 @@ header {
   }, 65);
 })();
 
+/* ================= FEATURED SLIDER LOGIC ================= */
+const featuredGames = [
+  {
+    name: "PKRBet",
+    img: "images/pkrbet.jpg",
+    link: "https://www.pkrbet.net/?dl=4juim2",
+    rating: "5.2/6"
+  },
+  {
+    name: "PKR365",
+    img: "images/pkr365.jpg",
+    link: "https://www.pkr365.win/?id=718905467",
+    rating: "5.0/6"
+  },
+  {
+    name: "JJWin",
+    img: "images/jjwin.jpg",
+    link: "https://www.jjwin777.com/?dl=80twcv",
+    rating: "5.8/6"
+  },
+  {
+    name: "C444",
+    img: "images/C444.jpg",
+    link: "https://www.333c444.com/?dl=cze6s5",
+    rating: "4.5/6"
+  },
+  {
+    name: "M666",
+    img: "images/M666.jpg",
+    link: "https://www.99m666.vip/?dl=aewqnr",
+    rating: "5.3/6"
+  },
+  {
+    name: "777SX",
+    img: "images/777sx.jpg",
+    link: "https://www.7777sx.com/?dl=6qtclk",
+    rating: "4.9/6"
+  },
+  {
+    name: "3Patti Gold",
+    img: "images/3Patti Gold.jpg",
+    link: "https://rummybd.com/?code=3044723",
+    rating: "5.1/6"
+  },
+  {
+    name: "7F777",
+    img: "images/7F777.jpg",
+    link: "https://7f777.tv?code=17015386",
+    rating: "4.7/6"
+  },
+  {
+    name: "88EF",
+    img: "images/88EF.jpg",
+    link: "https://88ef4.com/?dl=3xw81s",
+    rating: "5.4/6"
+  }
+];
+
+const sliderContainer = document.getElementById("sliderContainer");
+const dotsContainer = document.getElementById("sliderDots");
+let currentSlide = 0;
+let slideInterval;
+
+function buildSlider() {
+  featuredGames.forEach((game, index) => {
+    // Create slide
+    const slide = document.createElement("a");
+    slide.className = "slide" + (index === 0 ? " active" : "");
+    slide.href = game.link;
+    slide.target = "_blank";
+    slide.rel = "noopener noreferrer";
+    slide.innerHTML = `
+      <img src="${game.img}" alt="${game.name}">
+      <div class="slide-overlay">
+        <div class="slide-name">${game.name}</div>
+        <div class="slide-rating">★ ${game.rating}</div>
+      </div>
+    `;
+    sliderContainer.appendChild(slide);
+
+    // Create dot
+    const dot = document.createElement("div");
+    dot.className = "dot" + (index === 0 ? " active" : "");
+    dot.addEventListener("click", (e) => {
+      e.stopPropagation();
+      goToSlide(index);
+      resetInterval();
+    });
+    dotsContainer.appendChild(dot);
+  });
+}
+
+function goToSlide(index) {
+  const slides = document.querySelectorAll(".slide");
+  const dots = document.querySelectorAll(".dot");
+  slides[currentSlide].classList.remove("active");
+  dots[currentSlide].classList.remove("active");
+  currentSlide = index;
+  slides[currentSlide].classList.add("active");
+  dots[currentSlide].classList.add("active");
+}
+
+function nextSlide() {
+  const next = (currentSlide + 1) % featuredGames.length;
+  goToSlide(next);
+}
+
+function resetInterval() {
+  clearInterval(slideInterval);
+  slideInterval = setInterval(nextSlide, 3000);
+}
+
+// Init slider
+buildSlider();
+slideInterval = setInterval(nextSlide, 3000);
+
+// Pause on hover (desktop)
+sliderContainer.addEventListener("mouseenter", () => clearInterval(slideInterval));
+sliderContainer.addEventListener("mouseleave", resetInterval);
+
+/* ================= SEARCH FILTER ================= */
 function filterGames() {
   const input = document.getElementById("searchInput");
   const query = input.value.toLowerCase().trim();
